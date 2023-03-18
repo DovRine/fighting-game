@@ -1,3 +1,4 @@
+import { states } from '../states/index.js'
 import { jump, move, moveLeft, moveRight } from "../utils/index.js";
 
 function handleInput(inputType, inputValue) {
@@ -15,6 +16,8 @@ function handleInput(inputType, inputValue) {
                 jump.call(this)
                 move.call(this)
                 break;
+            case ' ':
+                this.setState(states.ATTACKING1)
         }
     }
     if (inputType === 'keyup') {

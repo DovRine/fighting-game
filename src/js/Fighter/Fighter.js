@@ -28,6 +28,11 @@ class Fighter {
         this.states = getInitialStates(this)
         this.currentState = this.states[states.IDLE]
         setPositions.call(this)
+        this.attackbox = {
+            width: 100,
+            height: 20,
+            color: 'red'
+        }
     }
     handleInput = handleInput.bind(this)
     setCenterPosition = setCenterPosition.bind(this)
