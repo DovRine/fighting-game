@@ -10,25 +10,14 @@ import { states } from "./index.js"
 
 class Falling extends State {
     constructor(fighter) {
-        super({ name: 'FALLING', fighter })
+        super({ name: 'FALLING', fighter, fps: 15 })
     }
     draw() {
-        const { fighter } = this
-        const { position: { x, y }, width: w, height: h } = fighter
-        const { ctx } = fighter.game
-        ctx.fillStyle = 'green'
-        ctx.fillRect(x, y, w, h)
-
-        // draw center
-        drawCenter.call(fighter)
-        drawTop.call(fighter)
-        drawBottom.call(fighter)
-        drawRight.call(fighter)
-        drawLeft.call(fighter)
+        super.draw()
     }
-    update() {
+    update(deltaTime) {
         this.draw()
-
+        super.update(deltaTime)
         const { fighter } = this
         const { game: { ground } } = fighter
 

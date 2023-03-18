@@ -8,6 +8,47 @@ class State {
         this.frames = 0
     }
 
+    draw() {
+        const { fighter } = this
+
+        const {
+            sprites: {
+                image,
+                frame,
+                states: { [this.name.toLowerCase()]: { row } }
+            },
+            scale,
+            position,
+            center,
+            game: { ctx }
+        } = fighter
+
+        const crop = {
+            x: frame.current * frame.width,
+            y: row * frame.height,
+            w: frame.width,
+            h: frame.height,
+        }
+        const destination = {
+            x: center.x - frame.width / 2 * scale,
+            y: position.y - frame.height * scale + frame.height,
+            w: frame.width * scale,
+            h: frame.height * scale
+        }
+
+        ctx.drawImage(
+            image,
+            crop.x,
+            crop.y,
+            crop.w,
+            crop.h,
+            destination.x,
+            destination.y,
+            destination.w,
+            destination.h
+        )
+    }
+
     update(deltaTime) {
         // NOTE: it takes a second for the sprites to load
         const { fighter } = this

@@ -16,44 +16,7 @@ class Idle extends State {
         })
     }
     draw() {
-        const { fighter } = this
-
-        const {
-            sprites: {
-                image,
-                frame,
-                states: { idle: { row } }
-            },
-            position,
-            center,
-            game: { ctx }
-        } = fighter
-
-        const crop = {
-            x: frame.current * frame.width,
-            y: row * frame.height,
-            w: frame.width,
-            h: frame.height,
-        }
-        const scale = 2
-        const destination = {
-            x: center.x - frame.width / 2 * scale,
-            y: position.y - frame.height * scale + frame.height,
-            w: frame.width * scale,
-            h: frame.height * scale
-        }
-
-        ctx.drawImage(
-            image,
-            crop.x,
-            crop.y,
-            crop.w,
-            crop.h,
-            destination.x,
-            destination.y,
-            destination.w,
-            destination.h
-        )
+        super.draw()
     }
     update(deltaTime) {
         // NOTE: it takes a second for the sprites to load

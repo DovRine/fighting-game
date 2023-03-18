@@ -21,6 +21,7 @@ class Fighter {
             x: 0,
             y: 0
         }
+        this.scale = 2
         this.speed = speed
         this.jumpHeight = jumpHeight
         this.states = getInitialStates(this)
