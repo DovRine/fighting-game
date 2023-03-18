@@ -9,7 +9,11 @@ class Fighter {
     constructor({
         game,
         position = { x: 0, y: 0 },
-        color = 'red'
+        speed = 10,
+        /*NOTE: jumpHeight is inversely proportional to position.y
+          *      so, the lower the number, the higher the jump.
+          */
+        jumpHeight = 100
     }) {
         this.game = game
         this.position = position
@@ -17,14 +21,8 @@ class Fighter {
             x: 0,
             y: 0
         }
-        this.width = 50
-        this.height = 150
-        this.color = color
-        this.speed = 10
-        /*NOTE: jumpHeight is inversely proportional to position.y
-          *      so, the lower the number, the higher the jump.
-          */
-        this.jumpHeight = 100
+        this.speed = speed
+        this.jumpHeight = jumpHeight
         this.states = getInitialStates(this)
         this.currentState = this.states[states.IDLE]
         setPositions.call(this)
@@ -32,6 +30,29 @@ class Fighter {
             width: 100,
             height: 20,
             color: 'red'
+        }
+        // --- sprite setup ---
+        const rows = 14
+        const framesPerRow = 28
+        const image = new Image()
+        image.src = 'img/fireKnight.png'
+        image.onload = () => {
+            this.sprites = {
+                image,
+                frame: {
+                    height: image.height / rows,
+                    width: image.width / framesPerRow,
+                    current: 0,
+                },
+                states: {
+                    idle: { frames: 8, row: -1 },
+                    running: { frames: 8, row: 1 },
+                    jumping: { frames: 3, row: 2 },
+                    falling: { frames: 3, row: 3 },
+                }
+            }
+            this.width = this.sprites.frame.width
+            this.height = this.sprites.frame.height
         }
     }
     handleInput = handleInput.bind(this)

@@ -1,7 +1,7 @@
 import { applyGravity } from "../utils/index.js"
 
-function update() {
-    this.currentState.update()
+function update(deltaTime) {
+    this.currentState.update(deltaTime)
     applyGravity.call(this)
 
 }
