@@ -1,7 +1,7 @@
 import { applyGravity } from "../utils/index.js"
 
 function update() {
-    this.draw()
+    this.currentState.update()
     applyGravity.call(this)
 
 }

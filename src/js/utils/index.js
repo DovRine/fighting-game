@@ -1,9 +1,11 @@
 export { applyGravity } from './applyGravity.js'
+export {debugFighter} from './debugFighter.js'
 export { drawBottom } from './drawBottom.js'
 export { drawCenter } from './drawCenter.js'
 export { drawLeft } from './drawLeft.js'
 export { drawRight } from './drawRight.js'
 export { drawTop } from './drawTop.js'
+export { jump, move, moveLeft, moveRight } from './move.js'
 export {
     setBottomPosition,
     setCenterPosition,

@@ -1,7 +1,9 @@
-import { setupCanvas } from '../utils/index.js'
 import { animate } from './animate.js'
 import { clearScreen } from './clearScreen.js'
+import { handleInput } from './handleInput.js'
+import { setupCanvas } from '../utils/index.js'
 import { start } from './start.js'
+
 import { Fighter } from '../Fighter/index.js'
 
 
@@ -25,6 +27,7 @@ class Game {
     }
     animate = animate.bind(this)
     clearScreen = clearScreen.bind(this)
+    handleInput = handleInput.bind(this)
     start = start.bind(this)
 }
 
