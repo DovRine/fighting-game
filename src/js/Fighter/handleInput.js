@@ -5,10 +5,12 @@ function handleInput(inputType, inputValue) {
     if (inputType === 'keydown') {
         switch (inputValue) {
             case 'ArrowRight':
+                this.setState(states.RUNNING)
                 moveRight.call(this)
                 move.call(this)
                 break;
             case 'ArrowLeft':
+                this.setState(states.RUNNING)
                 moveLeft.call(this)
                 move.call(this)
                 break;
@@ -24,6 +26,7 @@ function handleInput(inputType, inputValue) {
         switch (inputValue) {
             case 'ArrowRight':
             case 'ArrowLeft':
+                this.setState(states.IDLE)
                 this.velocity.x = 0
                 move.call(this)
                 break;
