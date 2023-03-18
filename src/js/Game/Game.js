@@ -17,11 +17,6 @@ class Game {
         this.ground = this.height - 80
         this.fighters = [
             new Fighter({
-                position: { x: 10, y: 10 },
-                color: 'dodgerblue',
-                game: this
-            }),
-            new Fighter({
                 position: { x: 250, y: 120 },
                 color: 'purple',
                 game: this
