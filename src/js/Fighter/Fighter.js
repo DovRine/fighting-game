@@ -1,3 +1,7 @@
+import { setCenterPosition } from '../utils/index.js'
+import { draw } from './draw.js'
+import { update } from './update.js'
+
 class Fighter {
     constructor({
         game,
@@ -6,20 +10,21 @@ class Fighter {
     }) {
         this.game = game
         this.position = position
+        this.velocity = {
+            x: 0,
+            y: 0
+        }
         this.width = 100
         this.height = 100
         this.color = color
+        this.top = this.position.y
+        this.right = this.position.x + this.width
+        this.left =
+        this.bottom = this.position.x + this.height
+        this.setCenterPosition()
     }
-
-    draw() {
-        const { position: { x, y }, width: w, height: h } = this
-        const { ctx } = this.game
-        ctx.fillStyle = this.color
-        ctx.fillRect(x, y, w, h)
-    }
-    update() {
-        this.draw()
-        this.position.x += 1
-    }
+    draw = draw.bind(this)
+    setCenterPosition = setCenterPosition.bind(this)
+    update = update.bind(this)
 }
 export { Fighter }
