@@ -45,7 +45,7 @@ class Fighter {
                     current: 0,
                 },
                 states: {
-                    idle: { frames: 8, row: -1 },
+                    idle: { frames: 8, row: 0 },
                     running: { frames: 8, row: 1 },
                     jumping: { frames: 3, row: 2 },
                     falling: { frames: 3, row: 3 },

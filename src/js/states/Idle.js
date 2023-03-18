@@ -11,11 +11,9 @@ class Idle extends State {
     constructor(fighter) {
         super({
             name: 'IDLE',
-            fighter
+            fighter,
+            fps: 15,
         })
-        this.fps = 15
-        this.frameInterval = 1000 / this.fps
-        this.frameTimer = 0
     }
     draw() {
         const { fighter } = this
@@ -33,7 +31,7 @@ class Idle extends State {
 
         const crop = {
             x: frame.current * frame.width,
-            y: frame.height + row * frame.height,
+            y: row * frame.height,
             w: frame.width,
             h: frame.height,
         }
@@ -59,20 +57,9 @@ class Idle extends State {
     }
     update(deltaTime) {
         // NOTE: it takes a second for the sprites to load
-        const { fighter } = this
-        if (!fighter.sprites) return
-
+        if (!this.fighter.sprites) return
         this.draw()
-        this.frameTimer += deltaTime
-
-        if (this.frameTimer >= this.frameInterval) {
-            const { sprites: { states: { idle: { frames } } } } = fighter
-            fighter.sprites.frame.current++
-            if (fighter.sprites.frame.current >= frames) {
-                fighter.sprites.frame.current = 0
-            }
-            this.frameTimer = 0
-        }
+        super.update(deltaTime)
     }
 }
 export { Idle }
