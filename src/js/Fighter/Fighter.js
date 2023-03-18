@@ -28,8 +28,8 @@ class Fighter {
         this.currentState = this.states[states.IDLE]
         setPositions.call(this)
         this.attackbox = {
-            width: 100,
-            height: 20,
+            width: 130,
+            height: 130,
             color: 'red'
         }
         // --- sprite setup ---
@@ -50,6 +50,7 @@ class Fighter {
                     running: { frames: 8, row: 1 },
                     jumping: { frames: 3, row: 2 },
                     falling: { frames: 3, row: 3 },
+                    attacking1: {frames: 11, row: 7}
                 }
             }
             this.width = this.sprites.frame.width

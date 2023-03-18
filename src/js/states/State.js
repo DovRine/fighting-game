@@ -49,7 +49,10 @@ class State {
         )
     }
 
-    update(deltaTime) {
+    update(deltaTime, {
+        drawOnce = false,
+        callback,
+    } = { drawOnce: false }) {
         // NOTE: it takes a second for the sprites to load
         const { fighter } = this
         if (!fighter.sprites) return
@@ -61,6 +64,11 @@ class State {
             fighter.sprites.frame.current++
             if (fighter.sprites.frame.current >= frames) {
                 fighter.sprites.frame.current = 0
+                if (drawOnce) {
+                    callback()
+                    this.frameTimer = 0
+                    return
+                }
             }
             this.frameTimer = 0
         }
