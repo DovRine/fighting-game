@@ -1,4 +1,5 @@
 import { State } from './State.js'
+import { move } from '../utils/index.js'
 
 class Running extends State {
     constructor(fighter) {
@@ -13,6 +14,13 @@ class Running extends State {
     }
     update(deltaTime) {
         this.draw()
+        const { fighter: { game: { keys: { ArrowRight, ArrowLeft } }, velocity, speed } } = this
+        if (ArrowRight.pressed) {
+            velocity.x = speed
+        } else if (ArrowLeft.pressed) {
+            velocity.x = -speed
+        }
+        move.call(this.fighter)
         super.update(deltaTime)
     }
 }

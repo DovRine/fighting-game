@@ -5,6 +5,8 @@ function animate(timestamp) {
     this.lastTime = timestamp
     this.clearScreen()
 
+    this.update()
+
     for (const fighter of this.fighters) {
         fighter.update(deltaTime)
     }

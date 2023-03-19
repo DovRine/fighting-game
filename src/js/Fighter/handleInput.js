@@ -1,34 +1,35 @@
 import { states } from '../states/index.js'
-import { jump, move, moveLeft, moveRight } from "../utils/index.js";
 
 function handleInput(inputType, inputValue) {
     if (inputType === 'keydown') {
         switch (inputValue) {
             case 'ArrowRight':
+                this.game.keys.ArrowRight.pressed = true
                 this.setState(states.RUNNING)
-                moveRight.call(this)
-                move.call(this)
                 break;
             case 'ArrowLeft':
+                this.game.keys.ArrowLeft.pressed = true
                 this.setState(states.RUNNING)
-                moveLeft.call(this)
-                move.call(this)
                 break;
             case 'ArrowUp':
-                jump.call(this)
-                move.call(this)
+                this.game.keys.ArrowUp.pressed = true
+                this.setState(states.JUMPING)
                 break;
             case ' ':
+                this.game.keys.space.pressed = true
                 this.setState(states.ATTACKING1)
+                break
         }
     }
     if (inputType === 'keyup') {
         switch (inputValue) {
             case 'ArrowRight':
-            case 'ArrowLeft':
+                this.game.keys.ArrowRight.pressed = false
                 this.setState(states.IDLE)
-                this.velocity.x = 0
-                move.call(this)
+                break;
+            case 'ArrowLeft':
+                this.game.keys.ArrowLeft.pressed = false
+                this.setState(states.IDLE)
                 break;
         }
     }

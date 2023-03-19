@@ -24,6 +24,36 @@ class Game {
                 game: this
             }),
         ]
+        this.keys = {
+            ArrowRight: {
+                pressed: false
+            },
+            ArrowLeft: {
+                pressed: false
+            },
+            ArrowUp: {
+                pressed: false
+            },
+            space: {
+                pressed: false
+            },
+        }
+
+        // === setup background ===
+        const layer11 = new Image()
+
+        this.backgroundLayers = []
+    }
+    draw() {
+        const { ctx } = this
+        for (const layer of this.backgroundLayers) {
+            if (layer) {
+                ctx.drawImage(layer, 0, 0, layer.width, layer.height, 0, 0, this.width, this.height)
+            }
+        }
+    }
+    update() {
+        this.draw()
     }
     animate = animate.bind(this)
     clearScreen = clearScreen.bind(this)

@@ -1,10 +1,3 @@
-import {
-    drawBottom,
-    drawCenter,
-    drawTop,
-    drawRight,
-    drawLeft,
-} from "../utils/index.js"
 import { State } from './State.js'
 
 class Idle extends State {
